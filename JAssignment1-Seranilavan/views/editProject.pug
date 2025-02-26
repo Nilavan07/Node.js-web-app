@@ -1,0 +1,96 @@
+doctype html
+html
+  head
+    title Edit Project
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        width: 420px;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-top: 12px;
+        font-weight: bold;
+        color: #555;
+      }
+      input, textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 6px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 15px;
+        background-color: #fff;
+      }
+      textarea {
+        height: 100px;
+        resize: vertical;
+      }
+      .button-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .button-group button, .button-group a {
+        flex: 1;
+        padding: 12px;
+        text-align: center;
+        font-size: 17px;
+        font-weight: bold;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+      button {
+        background: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      button:hover {
+        background: #0056b3;
+      }
+      a {
+        background: #6c757d;
+        color: white;
+      }
+      a:hover {
+        background: #5a6268;
+      }
+  body
+    .container
+      h1 Edit Project
+
+      form(method="POST" action=`/admin/projects/edit/${project._id}`)
+        label(for="name") Project Name:
+        input(type="text" name="name" value=project.name required)
+
+        label(for="description") Description:
+        textarea(name="description" required)= project.description
+
+        label(for="technologies") Technologies:
+        input(type="text" name="technologies" value=project.technologies required)
+
+        label(for="link") Project Link:
+        input(type="url" name="link" value=project.link)
+
+        .button-group
+          button(type="submit") Save Changes
+          a(href="/admin") Cancel
